@@ -2,9 +2,10 @@ import java.util.*;
 import java.io.*;
 
 public class zadanie1{
+	public BufferedReader reader;
+
 	public static final void main(String[] args) throws Exception{
 		String imiona = "imiona.txt", nazwiska = "nazwiska.txt";
-		BufferedReader reader;
 
 
 		System.out.print("Podaj n: ");
