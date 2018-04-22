@@ -30,17 +30,17 @@ public class Kolo implements Figura{
 	}
 	@Override
 	public String toString(){
-		return "Kolo; obwod: " + obwod() + "; pole: " + pole() + ";";
+		return "Kolo; obwod: " + obwod() + "; pole: " + pole() + "; punkt: (" + punkt.getPozX() + ", " + punkt.getPozY() + ");";
 	}
 
-	public boolean przecinaKo(Figura x){
+	public boolean przecina(Kolo x){
 		if(Math.pow((Math.pow((punkt.getPozX() - x.punkt.getPozX()), 2) + Math.pow((punkt.getPozY() - x.punkt.getPozY()), 2)), 1/2) < (bok+x.bok))
 			return true;
 		else
 			return false;
 	}
 
-	public boolean przecinaKw(Figura x){
+	public boolean przecina(Kwadrat x){
 		double ix, iy;
 		ix = x.punkt.getPozX() + Math.abs(x.bok/2);
 		iy = x.punkt.getPozY() + Math.abs(x.bok/2);
@@ -50,7 +50,7 @@ public class Kolo implements Figura{
 			return false;
 	}
 
-	public boolean przecinaPr(Figura x){
+	public boolean przecina(Prostokat x){
 		double ix, iy;
 		ix = x.punkt.getPozX() + Math.abs(x.bokA/2);
 		iy = x.punkt.getPozY() + Math.abs(x.bokB/2);

@@ -151,31 +151,59 @@ public class Rysunek{
 			for(Figura y: figury){
 				if(y==x)
 					continue;
-				if(x instanceof Kolo){
-					if(x.przecinaKo(y)){
-						x.prz.add(y);
+				if(y instanceof Kolo){
+					if(x.przecina((Kolo)y)){
+						if(x instanceof Kolo)
+							((Kolo)x).prz.add(y);
+						else if(x instanceof Kwadrat)
+							((Kwadrat)x).prz.add(y);
+						else if(x instanceof Prostokat)
+							((Prostokat)x).prz.add(y);
 					}
 				}
-				else if(x instanceof Kwadrat){
-					if(x.przecinaKw(y)){
-						x.prz.add(y);
+				else if(y instanceof Kwadrat){
+					if(x.przecina((Kwadrat)y)){
+						if(x instanceof Kolo)
+							((Kolo)x).prz.add(y);
+						else if(x instanceof Kwadrat)
+							((Kwadrat)x).prz.add(y);
+						else if(x instanceof Prostokat)
+							((Prostokat)x).prz.add(y);
 					}
 				}
-				else if(x instanceof Prostokat){
-					if(x.przecinaPr(y)){
-						x.prz.add(y);
+				else if(y instanceof Prostokat){
+					if(x.przecina((Prostokat)y)){
+						if(x instanceof Kolo)
+							((Kolo)x).prz.add(y);
+						else if(x instanceof Kwadrat)
+							((Kwadrat)x).prz.add(y);
+						else if(x instanceof Prostokat)
+							((Prostokat)x).prz.add(y);
 					}
 				}
 			}
 		}
 		for(Figura x: figury){
-			if(x.prz.size() == 0)
-				continue;
+			if(x instanceof Kolo)
+				if(((Kolo)x).prz.size() == 0)
+					continue;
+			else if(x instanceof Kwadrat)
+				if(((Kwadrat)x).prz.size() == 0)
+					continue;
+			else if(x instanceof Prostokat)
+				if(((Prostokat)x).prz.size() == 0)
+					continue;
 
-			System.out.println(x.nazwa + " o punkcie (" + x.punkt.getPozX() + ", " + x.punkt.getPozY() + "), przecina sie z:");
-			for(Figura y: x.prz){
-				System.out.println("\t" + y.nazwa + " o punkcie ("  + y.punkt.getPozX() + ", " + y.punkt.getPozY() + ");");
-			}
+			System.out.println(x + " przecina sie z:");
+			if(x instanceof Kolo)
+				for(Figura y: ((Kolo)x).prz)
+					System.out.println(y);
+			else if(x instanceof Kwadrat)
+				for(Figura y: ((Kwadrat)x).prz)
+					System.out.println(y);
+			else if(x instanceof Prostokat)
+				for(Figura y: ((Prostokat)x).prz)
+					System.out.println(y);
 			System.out.println();
 		}
 	}

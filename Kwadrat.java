@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Kwadrat extends FiguraForemna{
 	public double pole(){
 		return bok*bok;
@@ -23,10 +25,10 @@ public class Kwadrat extends FiguraForemna{
 	}
 	@Override
 	public String toString(){
-		return nazwa + "; obwod: " + obwod() + "; pole: " + pole() + ";";
+		return nazwa + "; obwod: " + obwod() + "; pole: " + pole() + "; punkt: (" + punkt.getPozX() + ", " + punkt.getPozY() + ");";
 	}
 
-	public boolean przecinaKo(Figura x){
+	public boolean przecina(Kolo x){
 		double ix, iy;
 		ix = punkt.getPozX() + Math.abs(bok/2);
 		iy = punkt.getPozY() + Math.abs(bok/2);
@@ -36,7 +38,7 @@ public class Kwadrat extends FiguraForemna{
 			return false;
 	}
 
-	public boolean przecinaKw(Figura x){
+	public boolean przecina(Kwadrat x){
 		double ix, iy, kx, ky;
 		ix = punkt.getPozX() + Math.abs(bok/2);
 		iy = punkt.getPozY() + Math.abs(bok/2);
@@ -48,7 +50,7 @@ public class Kwadrat extends FiguraForemna{
 			return false;
 	}
 
-	public boolean przecinaPr(Figura x){
+	public boolean przecina(Prostokat x){
 		double ix, iy, kx, ky;
 		ix = x.punkt.getPozX() + Math.abs(x.bokA/2);
 		iy = x.punkt.getPozY() + Math.abs(x.bokB/2);
